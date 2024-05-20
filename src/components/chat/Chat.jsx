@@ -9,10 +9,10 @@ const Chat = () => {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
 
-  const endRef = useRef(null);
+  const endRef = useRef(null); // React 完成渲染后，endRef.current 被更新为实际的 DOM 元素引用。
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth"});
+    endRef.current?.scrollIntoView({ behavior: "smooth"}); //使用 ?. 操作符是为了防止在某些情况下 endRef.current 仍然为 null 时调用 scrollIntoView 方法导致的运行时错误。即使 useRef 被初始设置为 null，在 React 完成渲染前的一瞬间或在特殊情况下，仍然有可能出现 null 的情况，使用 ?. 操作符可以确保代码的健壮性和安全性。
   },[]);
 
   const handleEmoji = e => {
