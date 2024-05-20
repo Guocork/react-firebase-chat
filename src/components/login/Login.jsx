@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './login.css'
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
@@ -17,11 +18,17 @@ const Login = () => {
         }
     };
 
+
+    const handleLogin = e => {
+        e.preventDefault() // 阻止事件的默认行文 阻止提交表单在页面的重新刷新
+       
+    };
+
     return (
         <div className='login'>
             <div className="item">
                 <h2>Welcome back</h2>
-                <form action="">
+                <form onSubmit={handleLogin}>
                     <input type="text" name="email" placeholder='Email' />
                     <input type="password" placeholder='Password' name='password' />
                     <button>Sign In</button>
